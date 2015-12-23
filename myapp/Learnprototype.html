@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<script type="text/javascript">
+				function Account(name){
+
+					this.name= name;
+				
+				}
+
+				Account.prototype.print = function() {  
+
+					console.log(this.name);
+					alert(this.name);
+					document.getElementById("first_el").innerHTML=this.name;
+
+
+				}
+
+				Account.prototype.print2 = function(){
+					document.getElementById("second_el").innerHTML=this.name;
+
+				}
+
+				function printer(){
+
+					var userAccount = new Account("jose");
+					userAccount.print();
+					
+
+				}
+				function printer2(){
+
+					
+					var userAccount2 = new Account("Michelle");
+					userAccount2.print2();
+
+				}
+
+				
+
+				
+				
+
+		</script>
+	</head>
+<body >
+
+	<div>	
+		<div id='first_el' >HERE I AM </div> 
+		<div id ='second_el' >test</div>
+
+		<button onclick="printer()">Try it</button>
+		<button onclick="printer2()">Try it again</button>
+
+	</div>
+
+</body>

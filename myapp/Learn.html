@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html ; charset=ISO-8859-1">
+
+		<title>JavaScript Tutorial</title>
+
+		<style>
+			#h3style
+			{ 
+				color: gray;
+			}
+		</style>
+
+
+
+	</head>
+
+	<body onResize="changeImage();" onLoad="alert('Website loaded');">
+		<script language="javascript" type="text/javascript">
+
+		function changeImage(){
+			document.getElementById("littlebrain").style.height="35%";
+			document.getElementById("littlebrain").style.width="35%";
+			return true;
+		}
+	</script>
+
+	<img src="LittleBrain.png" id="littlebrain" onCLick="alertme();" onDblClick="alert()">
+</img>
+
+	</body>
+
+</html>
