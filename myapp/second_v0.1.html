@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>BackBone Twitter</title>
+		
+	</head>	
+
+	<body>
+		<h1>Backbone for Twitter</h1>
+			<form>
+				<label>name </label><input id="author-name" name="author-name" type="text" />
+				<label>status</label><input id="status-update" name="status-update" type="text"/> 
+
+			</form>
+			<hr/>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+		<script>
+			var Tweet = Backbone.Model.extend({
+				defaults:function(){
+					return{
+						author: '',
+						status: ''
+					}
+				}
+
+
+			});
+
+			var TweetList = Backbone.Collection.extend({
+				model: Tweet
+			});
+			var tweet= new Tweet({ author:'Rakesh', status:'I am tweeting'});
+			var tweet2= new Tweet({author: 'Rahul', status:'Rahul is tweeting'});
+			var tweet3 = new Tweet({author: 'Reshma', status:'reshma is tweeting'});
+			var tweets =new TweetList([tweet,tweet2,tweet3]);
+			console.log(tweets.toJSON());
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>BackBone Twitter</title>
+		
+	</head>	
+
+	<body>
+		<h1>Backbone for Twitter</h1>
+			<form id="new-tweet">
+				<label>name </label><input id="author-name" name="author-name" type="text" />
+				<label>status</label><input id="status-update" name="status-update" type="text"/> 
+				<button >Post</button>
+			</form>
+			<p id ='p1'> TEST</p>
+			<hr/>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+		<script>
+
+
+			(function($){
+
+							var Tweet = Backbone.Model.extend({
+								defaults:function(){
+									return{
+										author: '',
+										status: ''
+									}
+								}
+						    });
+
+							var TweetList = Backbone.Collection.extend({
+								model: Tweet
+							    });
+							var tweets =new TweetList();
+
+							$(document).ready(function(){
+									$('#new-tweet').submit( function(){
+										var tweet= new Tweet({ author: $('#author-name').val(), status: $('#status-update').val()});
+										tweets.add(tweet);
+										
+										console.log(tweets.toJSON());
+										alert("I am an alert box!"+tweet.toJSON());
+
+										return false;
+
+									});	
+								});
+
+									$(document).ready(function(){
+								   		 $("#p1").mouseup(function(){
+								   	     alert("Mouse up inside");
+								   		 });
+									});
+
+			})(jQuery);
+
+
+			$(document).ready(function(){
+					   		 $("#p1").mouseup(function(){
+					   	     alert("Mouse up over p1!");
+					   		 });
+						});
+
+
+			
+		</script>
+
+	</body>
+</html>
