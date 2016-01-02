@@ -14,7 +14,7 @@
 				<label>status</label><input id="status-update" name="status-update" type="text"/> 
 				<button >Post</button>
 			</form>
-			<p id ='p1'> TEST</p>
+			
 			<hr/>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
@@ -45,27 +45,18 @@
 										tweets.add(tweet);
 										
 										console.log(tweets.toJSON());
-										alert("I am an alert box!"+tweet.toJSON());
+										
 
 										return false;
 
 									});	
-								});
+							});
 
-									$(document).ready(function(){
-								   		 $("#p1").mouseup(function(){
-								   	     alert("Mouse up inside");
-								   		 });
-									});
+									
 
 			})(jQuery);
 
 
-			$(document).ready(function(){
-					   		 $("#p1").mouseup(function(){
-					   	     alert("Mouse up over p1!");
-					   		 });
-						});
 
 
 			
