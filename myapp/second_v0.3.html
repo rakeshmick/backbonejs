@@ -4,11 +4,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title>BackBone Twitter</title>
-		<style>
-			.author {
-				text-decoration: underline;
-			}
-		</style>
 		
 	</head>	
 
@@ -50,37 +45,10 @@
 							var TweetView = Backbone.View.extend({
 								model: new Tweet(),
 								tagName: 'div',
-								events: {
-									'click .edit': 'edit',
-									'click .delete': 'delete',
-									'blur .status': 'close',
-									'keypress .status': 'onEnterUpdate'
-								},
 								initialize: function(){
 									this.template= _.template(
 										$('#tweet-template').html()
 										);
-								},
-								edit: function(ev){
-									ev.preventDefault();
-									this.$('.status').attr('contenteditable', true).focus();
-
-								},
-								close: function(ev){
-									var status = this.$('.status').text();
-									this.model.set('status', status);
-									this.$('.status').removeAttr('contenteditable');
-								},
-								onEnterUpdate: function(ev){
-									var self= this;
-									if(ev.keyCode === 13){
-										this.close();
-										_.delay(function() { self.$('.status').blur() }, 100);
-									}
-								},
-								delete: function(ev){// event
-									ev.preventDefault();
-									tweets.remove(this.model);
 								},
 								render: function(){
 									this.$el.html(this.template(this.model.toJSON()));
@@ -93,7 +61,6 @@
 								el: $('#tweets-container'),
 								initialize: function(){
 									this.model.on('add', this.render, this );
-									this.model.on('remove', this.render, this );
 								},
 								render: function(){
 									var self = this;
@@ -132,8 +99,6 @@
 		<script type="text/template" id="tweet-template">
 			<span class="author"><%= author %>:</span>
 			<span class="status"><%= status %></span>
-			<a href="#" class="edit">[edit]</a>
-			<a href="#" class="delete">[delete]</a>
 		</script>
 	</body>
 </html>
