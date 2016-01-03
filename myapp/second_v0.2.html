@@ -16,7 +16,6 @@
 			</form>
 			
 			<hr/>
-			<div id="tweets-container"></div>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
@@ -37,68 +36,26 @@
 
 							var TweetList = Backbone.Collection.extend({
 								model: Tweet
-							});
-
+							    });
 							var tweets =new TweetList();
-
-
-							var TweetView = Backbone.View.extend({
-								model: new Tweet(),
-								tagName: 'div',
-								initialize: function(){
-									this.template= _.template(
-										$('#tweet-template').html()
-										);
-								},
-								render: function(){
-									this.$el.html(this.template(this.model.toJSON()));
-									return this;
-								}
-							});
-
-							var TweetsView= Backbone.View.extend({
-								model: tweets,
-								el: $('#tweets-container'),
-								initialize: function(){
-									this.model.on('add', this.render, this );
-								},
-								render: function(){
-									var self = this;
-									self.$el.html('');
-									
-									_.each(this.model.toArray(), 
-										function(tweet, i){
-											self.$el.append(
-												(new TweetView({model: tweet}))
-												.render().$el
-											);
-										}
-									);
-									return this;
-								}
-							});
 
 							$(document).ready(function(){
 									$('#new-tweet').submit( function(){
-										var tweet= new Tweet(
-											{ 
-												author: $('#author-name').val(), 
-												status: $('#status-update').val()
-											});
+										var tweet= new Tweet({ author: $('#author-name').val(), status: $('#status-update').val()});
 										tweets.add(tweet);
+										
 										console.log(tweets.toJSON());
+										
+
 										return false;
 
 									});	
-									
-								var appView = new TweetsView();
-
 							});
 			})(jQuery);		
 		</script>
 		<script type="text/template" id="tweet-template">
 			<span class="author"><%= author %>:</span>
-			<span class="status"><%= status %></span>
+			<span class="status-update"><%= status-update %></span>
 		</script>
 	</body>
 </html>
